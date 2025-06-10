@@ -400,9 +400,12 @@ public class Avion
      * Método para la extensión 2.
      * @return Respuesta 2.
      */
-    public String metodo2( )
-    {
-        return "Respuesta 2";
+    public String metodo2() {
+        int sillaLibre = buscarVentanaLibreEconomica();
+        if (sillaLibre != -1) {
+            return "Hay una silla económica libre junto a la ventana. Número: " + sillaLibre;
+        } else {
+            return "No hay sillas económicas libres en ventana.";
+        }
     }
-
 }
