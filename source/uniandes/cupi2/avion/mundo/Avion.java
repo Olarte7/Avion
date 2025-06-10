@@ -333,6 +333,54 @@ public class Avion
      * Método para la extensión 1.
      * @return Respuesta 1.
      */
+    
+    public Avion(Silla[] ejecutivas, Silla[] economicas) {
+        this.sillasEjecutivas = ejecutivas;
+        this.sillasEconomicas = economicas;
+    }
+
+    /**
+     * Método para la extensión 1.
+     * @return Respuesta 1.
+     */
+    private int contarOcupadasEnVentana(Silla[] sillas) {
+        int total = 0;
+        for (Silla s : sillas) {
+            if (s.sillaAsignada() && s.darUbicacion() == Ubicacion.VENTANA) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public int contarVentanasOcupadasPorClase(Clase clase) {
+        Silla[] sillas = clase == Clase.EJECUTIVA ? sillasEjecutivas : sillasEconomicas;
+        return contarOcupadasEnVentana(sillas);
+    }
+
+    public Clase claseConMasVentanaOcupada() {
+        int eco = contarVentanasOcupadasPorClase(Clase.ECONOMICA);
+        int eje = contarVentanasOcupadasPorClase(Clase.EJECUTIVA);
+
+        if (eco > eje) return Clase.ECONOMICA;
+        if (eje > eco) return Clase.EJECUTIVA;
+        return null;
+    }
+
+    public int buscarVentanaLibreEconomica() {
+        for (Silla s : sillasEconomicas) {
+            if (!s.sillaAsignada() && s.darUbicacion() == Ubicacion.VENTANA) {
+                return s.darNumero();
+            }
+        }
+        return -1;
+    }
+
+    public Silla[] getSillasEjecutivas() {
+        return sillasEjecutivas;
+    }
+
+    
     public String metodo1( )
     {
         return "Respuesta 1";

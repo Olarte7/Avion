@@ -66,17 +66,19 @@ public class Silla
     /**
      * Clase de la silla.
      */
-    private Clase clase;
+    Clase clase;
 
     /**
      * Ubicación de la silla.
      */
-    private Ubicacion ubicacion;
+    Ubicacion ubicacion;
 
     /**
      * Pasajero asignado a la silla.
      */
     private Pasajero pasajero;
+
+	public Object estado;
 
     // -----------------------------------------------------------------
     // Constructores
