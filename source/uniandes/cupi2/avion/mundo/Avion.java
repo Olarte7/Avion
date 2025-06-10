@@ -381,10 +381,20 @@ public class Avion
     }
 
     
-    public String metodo1( )
-    {
-        return "Respuesta 1";
+    public String metodo1() {
+        Clase claseMayor = claseConMasVentanaOcupada();
+
+        if (claseMayor == Clase.ECONOMICA) {
+            return "La clase económica tiene: " + contarVentanasOcupadasPorClase(claseMayor) + " sillas ocupadas";
+        } else if (claseMayor == Clase.EJECUTIVA) {
+            return "La clase ejecutiva tiene: " + contarVentanasOcupadasPorClase(claseMayor) + " sillas ocupadas";
+        } else if (contarVentanasOcupadasPorClase(claseMayor) == 0 && contarVentanasOcupadasPorClase(claseMayor) == 0) {
+            return "No hay sillas ocupadas en las ventanas.";
+        } else {
+            return "Ambas tienen la misma cantidad de sillas ocupadas en ventana: " + contarVentanasOcupadasPorClase(claseMayor);
+        }
     }
+
 
     /**
      * Método para la extensión 2.
